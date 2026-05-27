@@ -2,10 +2,27 @@
 
 > Quiet your AI chat sidebars.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-black.svg)](./LICENSE)
-[![Built with WXT](https://img.shields.io/badge/built%20with-WXT-67d?logo=vite&logoColor=white)](https://wxt.dev)
-[![Manifest V3](https://img.shields.io/badge/Manifest-V3-4285F4?logo=googlechrome&logoColor=white)](https://developer.chrome.com/docs/extensions/mv3/intro/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](./CONTRIBUTING.md)
+<p align="center">
+  <a href="https://goodluckh.github.io/Hush/">
+    <img src="./docs/icon-128.png" width="96" alt="Hush" />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://goodluckh.github.io/Hush/"><strong>👉 hush.so-style install guide →</strong></a><br/>
+  <sub>(no terminal, no <code>npm install</code>, just download & click)</sub>
+</p>
+
+<p align="center">
+  <a href="https://github.com/GoodluckH/Hush/releases/latest/download/hush-0.1.0-chrome.zip"><img src="https://img.shields.io/badge/⬇️_Download_for_Chrome-fafafa?style=for-the-badge&labelColor=fafafa&color=fafafa" alt="Download for Chrome" /></a>
+</p>
+
+<p align="center">
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-black.svg" alt="MIT" /></a>
+  <a href="https://wxt.dev"><img src="https://img.shields.io/badge/built%20with-WXT-67d?logo=vite&logoColor=white" alt="WXT" /></a>
+  <a href="https://developer.chrome.com/docs/extensions/mv3/intro/"><img src="https://img.shields.io/badge/Manifest-V3-4285F4?logo=googlechrome&logoColor=white" alt="MV3" /></a>
+  <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
+</p>
 
 Hush blurs the conversation titles in **ChatGPT**, **Claude**, and **Gemini** so you can leave a chat open on a shared screen, in a meeting, or at a coffee shop without leaking context. Hover any blurred row to reveal it. Everything runs locally — no data ever leaves your browser.
 
