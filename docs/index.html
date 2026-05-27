@@ -112,6 +112,18 @@
       .hero {
         padding: 32px 0 48px;
       }
+      .demo {
+        margin: 36px 0 32px;
+        border: var(--border);
+        background: var(--paper-2);
+        line-height: 0;          /* kill the inline-element gap */
+        box-shadow: 6px 6px 0 var(--ink);
+      }
+      .demo video {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
       .eyebrow {
         display: inline-flex;
         align-items: center;
@@ -422,6 +434,20 @@
         <p class="tagline">
           Hush blurs the conversation titles in ChatGPT, Claude, and Gemini so you can leave a chat open in a meeting, on a shared screen, or in public.
         </p>
+
+        <figure class="demo">
+          <video
+            src="./demo.mp4"
+            poster="./demo-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="Hush demo: toggling the blur on a ChatGPT sidebar and hovering a row to reveal it"
+          ></video>
+        </figure>
+
         <div class="cta-row">
           <a class="btn btn-primary" href="https://github.com/GoodluckH/Hush/releases/latest/download/Hush.zip">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

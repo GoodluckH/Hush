@@ -4,13 +4,13 @@
 
 <p align="center">
   <a href="https://goodluckh.github.io/Hush/">
-    <img src="./docs/icon-128.png" width="96" alt="Hush" />
+    <img src="./docs/demo.gif" width="720" alt="Hush demo: blurring ChatGPT sidebar titles and revealing on hover" />
   </a>
 </p>
 
 <p align="center">
-  <a href="https://goodluckh.github.io/Hush/"><strong>👉 hush.so-style install guide →</strong></a><br/>
-  <sub>(no terminal, no <code>npm install</code>, just download & click)</sub>
+  <a href="https://goodluckh.github.io/Hush/"><strong>👉 One-click install guide →</strong></a><br/>
+  <sub>(no terminal, no <code>npm install</code>, just download and click)</sub>
 </p>
 
 <p align="center">
