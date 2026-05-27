@@ -16,21 +16,23 @@
     <link rel="icon" type="image/png" sizes="128x128" href="./icon-128.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #0a0a0c;
-        --bg-elev: #161618;
-        --fg: #fafafa;
-        --fg-soft: #a1a1aa;
-        --muted: #71717a;
-        --border: #232326;
-        --border-strong: #2e2e33;
-        --accent: #fafafa;
-        --brand-glow: rgba(255, 255, 255, 0.06);
-        --chatgpt: #10a37f;
-        --claude: #d97757;
-        --gemini: #4285f4;
+        /* Warm editorial palette */
+        --paper: #efe6d4;       /* Page background — warm cream */
+        --paper-2: #e5dac3;     /* Slightly deeper for cards */
+        --ink: #1a1410;         /* Primary text / borders */
+        --ink-soft: #4b3f33;    /* Secondary text */
+        --ink-muted: #8a7a68;   /* Tertiary text */
+        --rust: #b3401a;        /* Accent (warm, ties to Claude) */
+        --rust-soft: #d4734a;
+
+        --serif: 'Instrument Serif', 'EB Garamond', Georgia, serif;
+        --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        --mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+
+        --border: 1.5px solid var(--ink);
       }
 
       * { box-sizing: border-box; }
@@ -38,300 +40,360 @@
       html, body {
         margin: 0;
         padding: 0;
-        background: var(--bg);
-        color: var(--fg);
-        font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
-        letter-spacing: -0.011em;
       }
 
+      /* Subtle paper texture using layered radial gradients */
       body {
         background:
-          radial-gradient(80% 50% at 50% 0%, rgba(255, 255, 255, 0.04) 0%, transparent 60%),
-          var(--bg);
+          radial-gradient(ellipse at 20% 0%, rgba(179, 64, 26, 0.04), transparent 50%),
+          radial-gradient(ellipse at 80% 100%, rgba(26, 20, 16, 0.05), transparent 50%),
+          var(--paper);
+        min-height: 100vh;
       }
 
       main {
-        max-width: 720px;
+        max-width: 760px;
         margin: 0 auto;
-        padding: 56px 24px 80px;
+        padding: 0 24px;
       }
 
-      /* ---------- Header ---------- */
-      .nav {
+      /* ---------- Top bar ---------- */
+      .topbar {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 64px;
+        padding: 20px 0;
+        border-bottom: var(--border);
+        margin-bottom: 48px;
       }
       .brand {
         display: flex;
         align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        font-size: 16px;
-        letter-spacing: -0.015em;
+        gap: 12px;
       }
-      .brand img {
-        width: 28px;
-        height: 28px;
-        border-radius: 8px;
+      .brand-mark {
+        width: 32px;
+        height: 32px;
+        border: var(--border);
+        background: var(--ink);
+        display: grid;
+        place-items: center;
       }
-      .nav-right {
+      .brand-mark img {
+        width: 22px;
+        height: 22px;
+      }
+      .brand-name {
+        font-family: var(--serif);
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+      }
+      .topbar-nav {
         display: flex;
-        gap: 18px;
-        font-size: 14px;
+        gap: 24px;
+        font-size: 13.5px;
       }
-      .nav-right a {
-        color: var(--fg-soft);
+      .topbar-nav a {
+        color: var(--ink);
         text-decoration: none;
-        transition: color 160ms ease;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 2px;
+        transition: border-color 160ms ease;
       }
-      .nav-right a:hover { color: var(--fg); }
+      .topbar-nav a:hover { border-bottom-color: var(--ink); }
 
       /* ---------- Hero ---------- */
       .hero {
-        text-align: center;
-        padding: 24px 0 48px;
+        padding: 32px 0 48px;
       }
       .eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 6px;
-        font-size: 12.5px;
-        color: var(--fg-soft);
-        background: var(--bg-elev);
-        border: 1px solid var(--border);
+        gap: 8px;
+        font-size: 12px;
+        font-family: var(--mono);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--ink-soft);
         padding: 6px 12px;
-        border-radius: 999px;
-        margin-bottom: 24px;
-        letter-spacing: 0.01em;
+        border: var(--border);
+        background: var(--paper-2);
+        margin-bottom: 28px;
       }
       .eyebrow-dot {
         width: 6px;
         height: 6px;
-        border-radius: 50%;
-        background: var(--chatgpt);
-        box-shadow: 0 0 0 3px rgba(16, 163, 127, 0.15);
+        background: var(--rust);
       }
       h1 {
-        font-size: 56px;
-        line-height: 1.05;
-        font-weight: 700;
-        margin: 0 0 16px;
-        letter-spacing: -0.035em;
+        font-family: var(--serif);
+        font-size: 72px;
+        line-height: 0.98;
+        font-weight: 400;
+        margin: 0 0 24px;
+        letter-spacing: -0.02em;
+      }
+      h1 em {
+        font-style: italic;
+        color: var(--rust);
       }
       .tagline {
         font-size: 19px;
-        line-height: 1.5;
-        color: var(--fg-soft);
-        margin: 0 auto 32px;
-        max-width: 520px;
+        line-height: 1.55;
+        color: var(--ink-soft);
+        margin: 0 0 36px;
+        max-width: 560px;
       }
       .cta-row {
         display: flex;
         gap: 12px;
-        justify-content: center;
         flex-wrap: wrap;
-        margin-bottom: 16px;
+        align-items: center;
       }
       .btn {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        padding: 13px 22px;
-        border-radius: 10px;
-        font-weight: 600;
+        gap: 10px;
+        padding: 14px 24px;
+        font-family: var(--sans);
+        font-weight: 500;
         font-size: 15px;
         text-decoration: none;
-        transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
-        letter-spacing: -0.005em;
+        border: var(--border);
         cursor: pointer;
-        border: 1px solid transparent;
-      }
-      .btn:active { transform: translateY(1px); }
-      .btn-primary {
-        background: var(--fg);
-        color: var(--bg);
-      }
-      .btn-primary:hover { background: #e4e4e7; }
-      .btn-ghost {
+        transition: transform 100ms ease, background 160ms ease, color 160ms ease;
+        letter-spacing: -0.005em;
         background: transparent;
-        color: var(--fg);
-        border-color: var(--border-strong);
+        color: var(--ink);
       }
-      .btn-ghost:hover { background: var(--bg-elev); }
+      .btn:active { transform: translate(1px, 1px); }
+      .btn-primary {
+        background: var(--ink);
+        color: var(--paper);
+        box-shadow: 4px 4px 0 var(--ink);
+      }
+      .btn-primary:hover { box-shadow: 2px 2px 0 var(--ink); transform: translate(2px, 2px); }
+      .btn-ghost:hover { background: var(--paper-2); }
       .btn svg { width: 16px; height: 16px; }
       .cta-meta {
-        font-size: 12.5px;
-        color: var(--muted);
+        font-size: 13px;
+        color: var(--ink-muted);
+        font-family: var(--mono);
+        margin-left: 4px;
       }
 
-      /* ---------- Logos row ---------- */
+      /* ---------- Works with ---------- */
       .works-with {
-        margin: 56px 0;
-        text-align: center;
+        margin: 64px 0;
+        border-top: var(--border);
+        border-bottom: var(--border);
+        padding: 28px 0;
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        flex-wrap: wrap;
       }
       .works-with-label {
+        font-family: var(--mono);
         font-size: 11.5px;
         text-transform: uppercase;
         letter-spacing: 0.12em;
-        color: var(--muted);
-        margin-bottom: 18px;
+        color: var(--ink-muted);
+        flex-shrink: 0;
       }
       .logos {
         display: flex;
+        align-items: center;
         gap: 36px;
-        justify-content: center;
         flex-wrap: wrap;
       }
       .logo-chip {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--fg-soft);
+        gap: 12px;
+        font-family: var(--serif);
+        font-size: 22px;
+        color: var(--ink);
       }
-      .logo-dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
+      .logo-chip img {
+        width: 32px;
+        height: 32px;
+        display: block;
       }
 
-      /* ---------- Install steps ---------- */
-      .install {
+      /* ---------- Install section ---------- */
+      .install-section {
         margin: 64px 0;
-        padding: 32px;
-        background: var(--bg-elev);
-        border: 1px solid var(--border);
-        border-radius: 16px;
       }
-      .install h2 {
-        font-size: 22px;
-        font-weight: 600;
-        margin: 0 0 24px;
-        letter-spacing: -0.02em;
+      .section-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+        padding-bottom: 12px;
+        border-bottom: var(--border);
+      }
+      .section-head h2 {
+        font-family: var(--serif);
+        font-size: 36px;
+        font-weight: 400;
+        margin: 0;
+        letter-spacing: -0.015em;
+      }
+      .section-head .meta {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
       .steps {
         display: flex;
         flex-direction: column;
-        gap: 20px;
       }
       .step {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-      }
-      .step-num {
-        flex-shrink: 0;
-        width: 28px;
-        height: 28px;
-        border-radius: 50%;
-        background: var(--fg);
-        color: var(--bg);
-        font-weight: 600;
-        font-size: 13px;
         display: grid;
-        place-items: center;
-        margin-top: 1px;
+        grid-template-columns: 64px 1fr;
+        gap: 24px;
+        padding: 24px 0;
+        border-bottom: 1px solid rgba(26, 20, 16, 0.15);
       }
-      .step-body {
-        flex: 1;
-        min-width: 0;
+      .step:last-child { border-bottom: none; }
+      .step-num {
+        font-family: var(--serif);
+        font-size: 44px;
+        font-style: italic;
+        color: var(--rust);
+        line-height: 1;
       }
       .step-title {
-        font-weight: 500;
-        margin-bottom: 4px;
+        font-family: var(--serif);
+        font-size: 22px;
+        font-weight: 400;
+        margin: 0 0 6px;
+        letter-spacing: -0.01em;
       }
       .step-detail {
-        color: var(--fg-soft);
-        font-size: 14px;
-        line-height: 1.55;
+        color: var(--ink-soft);
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0;
       }
       .step-detail code {
-        background: var(--bg);
-        border: 1px solid var(--border);
-        padding: 1px 6px;
-        border-radius: 4px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 12.5px;
-        color: var(--fg);
+        background: var(--paper-2);
+        border: 1px solid var(--ink);
+        padding: 1px 7px;
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--ink);
       }
       .step-detail .kbd {
         display: inline-block;
-        padding: 2px 6px;
-        background: var(--bg);
-        border: 1px solid var(--border);
-        border-bottom-width: 2px;
-        border-radius: 5px;
-        font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-        font-size: 11.5px;
-        color: var(--fg);
+        padding: 2px 7px;
+        background: var(--paper);
+        border: 1.5px solid var(--ink);
+        border-bottom-width: 3px;
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink);
         line-height: 1;
+        margin: 0 1px;
       }
 
-      /* ---------- Trust / privacy ---------- */
+      /* ---------- Trust ---------- */
       .trust {
-        margin: 48px 0;
-        text-align: center;
-        font-size: 14px;
-        color: var(--fg-soft);
-        line-height: 1.6;
+        margin: 64px 0;
+        padding: 32px;
+        border: var(--border);
+        background: var(--paper-2);
       }
-      .trust strong {
-        color: var(--fg);
-        font-weight: 600;
+      .trust h3 {
+        font-family: var(--serif);
+        font-size: 28px;
+        font-weight: 400;
+        margin: 0 0 12px;
+        letter-spacing: -0.01em;
+      }
+      .trust p {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.65;
+        color: var(--ink-soft);
+      }
+      .trust a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-decoration-thickness: 1.5px;
+        text-underline-offset: 3px;
       }
 
       /* ---------- Footer ---------- */
       footer {
-        margin-top: 64px;
-        padding-top: 24px;
-        border-top: 1px solid var(--border);
+        margin-top: 80px;
+        padding: 28px 0;
+        border-top: var(--border);
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-size: 13px;
-        color: var(--muted);
+        color: var(--ink-muted);
+        font-family: var(--mono);
       }
       footer a {
-        color: var(--muted);
+        color: var(--ink-soft);
         text-decoration: none;
+        border-bottom: 1px solid transparent;
+        padding-bottom: 1px;
+        transition: border-color 160ms ease;
       }
-      footer a:hover { color: var(--fg); }
+      footer a:hover { border-bottom-color: var(--ink-soft); }
 
-      @media (max-width: 600px) {
-        main { padding: 40px 20px 64px; }
-        .nav { margin-bottom: 40px; }
-        h1 { font-size: 40px; }
+      @media (max-width: 640px) {
+        main { padding: 0 18px; }
+        .topbar { margin-bottom: 32px; }
+        .hero { padding: 16px 0 32px; }
+        h1 { font-size: 52px; }
         .tagline { font-size: 17px; }
-        .install { padding: 24px; }
-        .logos { gap: 20px; }
+        .section-head h2 { font-size: 28px; }
+        .step { grid-template-columns: 48px 1fr; gap: 16px; }
+        .step-num { font-size: 36px; }
+        .step-title { font-size: 19px; }
+        .trust { padding: 24px; }
+        .works-with { gap: 16px; }
+        .logos { gap: 24px; }
+        .logo-chip { font-size: 18px; }
+        .logo-chip img { width: 26px; height: 26px; }
         footer { flex-direction: column; gap: 12px; }
+        .btn-primary { box-shadow: 3px 3px 0 var(--ink); }
       }
     </style>
   </head>
   <body>
     <main>
-      <nav class="nav">
+      <header class="topbar">
         <div class="brand">
-          <img src="./icon-128.png" alt="" />
-          <span>Hush</span>
+          <div class="brand-mark"><img src="./icon-128.png" alt="" /></div>
+          <span class="brand-name">Hush</span>
         </div>
-        <div class="nav-right">
+        <nav class="topbar-nav">
           <a href="https://github.com/GoodluckH/Hush">GitHub</a>
           <a href="https://github.com/GoodluckH/Hush#how-it-works">How it works</a>
-        </div>
-      </nav>
+        </nav>
+      </header>
 
       <section class="hero">
         <div class="eyebrow">
           <span class="eyebrow-dot"></span>
-          <span>Now in early access — v0.1</span>
+          <span>v0.1 — early access</span>
         </div>
-        <h1>Quiet your AI chat sidebars.</h1>
+        <h1>Quiet your <em>AI chat</em> sidebars.</h1>
         <p class="tagline">
           Hush blurs the conversation titles in ChatGPT, Claude, and Gemini so you can leave a chat open in a meeting, on a shared screen, or in public — without leaking context.
         </p>
@@ -346,65 +408,68 @@
             <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 .5C5.7.5.5 5.7.5 12c0 5 3.3 9.3 7.8 10.8.6.1.8-.2.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2.9-.2 1.9-.4 2.9-.4 1 0 2 .1 2.9.4 2.2-1.5 3.2-1.2 3.2-1.2.6 1.6.2 2.8.1 3.1.7.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.5-1.5 7.8-5.8 7.8-10.8C23.5 5.7 18.3.5 12 .5Z"/>
             </svg>
-            View on GitHub
+            View source
           </a>
+          <span class="cta-meta">free · 42 KB</span>
         </div>
-        <p class="cta-meta">Free · Open source · 42 KB download</p>
       </section>
 
       <section class="works-with">
         <div class="works-with-label">Works with</div>
         <div class="logos">
-          <div class="logo-chip"><span class="logo-dot" style="background: var(--chatgpt)"></span>ChatGPT</div>
-          <div class="logo-chip"><span class="logo-dot" style="background: var(--claude)"></span>Claude</div>
-          <div class="logo-chip"><span class="logo-dot" style="background: var(--gemini)"></span>Gemini</div>
+          <div class="logo-chip"><img src="./logos/chatgpt.png" alt="" />ChatGPT</div>
+          <div class="logo-chip"><img src="./logos/claude.png" alt="" />Claude</div>
+          <div class="logo-chip"><img src="./logos/gemini.png" alt="" />Gemini</div>
         </div>
       </section>
 
-      <section class="install">
-        <h2>Install in 4 steps</h2>
+      <section class="install-section">
+        <div class="section-head">
+          <h2>Install in four steps</h2>
+          <span class="meta">~30 seconds</span>
+        </div>
         <div class="steps">
           <div class="step">
-            <div class="step-num">1</div>
+            <div class="step-num">01</div>
             <div class="step-body">
-              <div class="step-title">Download the file above</div>
-              <div class="step-detail">It's a small zip. Double-click to unzip it — you'll get a folder called <code>chrome-mv3</code>.</div>
+              <h3 class="step-title">Download the file above</h3>
+              <p class="step-detail">It's a small zip. Double-click to unzip it — you'll get a folder called <code>chrome-mv3</code>.</p>
             </div>
           </div>
           <div class="step">
-            <div class="step-num">2</div>
+            <div class="step-num">02</div>
             <div class="step-body">
-              <div class="step-title">Open Chrome's extensions page</div>
-              <div class="step-detail">Paste this in your address bar: <code>chrome://extensions</code></div>
+              <h3 class="step-title">Open Chrome's extensions page</h3>
+              <p class="step-detail">Paste this into your address bar: <code>chrome://extensions</code></p>
             </div>
           </div>
           <div class="step">
-            <div class="step-num">3</div>
+            <div class="step-num">03</div>
             <div class="step-body">
-              <div class="step-title">Turn on Developer mode</div>
-              <div class="step-detail">There's a toggle in the top-right corner of the extensions page. Flip it on.</div>
+              <h3 class="step-title">Turn on Developer mode</h3>
+              <p class="step-detail">A toggle lives in the top-right corner of the extensions page. Flip it on.</p>
             </div>
           </div>
           <div class="step">
-            <div class="step-num">4</div>
+            <div class="step-num">04</div>
             <div class="step-body">
-              <div class="step-title">Click "Load unpacked" → pick the <code>chrome-mv3</code> folder</div>
-              <div class="step-detail">Done. Visit ChatGPT, Claude, or Gemini — your sidebar titles are blurred. Hover any row to reveal it. Use <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">Y</span> to toggle (or <span class="kbd">Ctrl</span><span class="kbd">⇧</span><span class="kbd">Y</span> on Windows).</div>
+              <h3 class="step-title">Click <code>Load unpacked</code> and pick the folder</h3>
+              <p class="step-detail">Done. Visit ChatGPT, Claude, or Gemini — sidebar titles are blurred. Hover any row to reveal it. Use <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">Y</span> to toggle, or <span class="kbd">Ctrl</span><span class="kbd">⇧</span><span class="kbd">Y</span> on Windows.</p>
             </div>
           </div>
         </div>
       </section>
 
       <section class="trust">
+        <h3>Nothing leaves your browser.</h3>
         <p>
-          <strong>Hush runs entirely on your device.</strong>
-          No analytics, no tracking, no servers. The whole extension is 42 KB and ~600 lines of code you can <a href="https://github.com/GoodluckH/Hush" style="color: var(--fg); text-decoration: underline;">read on GitHub</a>.
+          Hush runs entirely on your device. No analytics, no tracking, no servers, no account. The whole extension is 42 KB and about 600 lines of code you can <a href="https://github.com/GoodluckH/Hush">read on GitHub</a> in a single sitting.
         </p>
       </section>
 
       <footer>
-        <span>© 2026 · MIT licensed · Made by <a href="https://github.com/GoodluckH">@GoodluckH</a></span>
-        <span><a href="https://github.com/GoodluckH/Hush/issues">Report an issue</a></span>
+        <span>© 2026 · MIT · Made by <a href="https://github.com/GoodluckH">@GoodluckH</a></span>
+        <span><a href="https://github.com/GoodluckH/Hush/issues">Report an issue →</a></span>
       </footer>
     </main>
   </body>
