@@ -1,0 +1,41 @@
+{
+  "name": "hush",
+  "description": "Hush hides sensitive conversation titles in ChatGPT, Claude, and Gemini sidebars.",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "author": "GoodluckH",
+  "homepage": "https://github.com/GoodluckH/Hush#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoodluckH/Hush.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GoodluckH/Hush/issues"
+  },
+  "keywords": [
+    "chrome-extension",
+    "privacy",
+    "chatgpt",
+    "claude",
+    "gemini",
+    "wxt"
+  ],
+  "scripts": {
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox",
+    "compile": "tsc --noEmit",
+    "icons": "node scripts/gen-icons.mjs",
+    "postinstall": "wxt prepare"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.5",
+    "typescript": "^5.9.3",
+    "wxt": "^0.20.26"
+  }
+}
