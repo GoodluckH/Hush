@@ -24,7 +24,7 @@
   <a href="./CONTRIBUTING.md"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome" /></a>
 </p>
 
-Hush blurs the conversation titles in **ChatGPT**, **Claude**, and **Gemini** so you can leave a chat open on a shared screen, in a meeting, or at a coffee shop without leaking context. Hover any blurred row to reveal it. Everything runs locally — no data ever leaves your browser.
+Hush blurs the conversation titles in **ChatGPT**, **Claude**, and **Gemini** so you can leave a chat open on a shared screen, in a meeting, or at a coffee shop. Hover any blurred row to reveal it. Everything runs locally. No data ever leaves your browser.
 
 ## Features
 
@@ -58,7 +58,7 @@ For Firefox, run `npm run build:firefox` and load `.output/firefox-mv2` via `abo
 ## Develop
 
 ```bash
-npm run dev          # Chrome with HMR — opens a fresh browser profile
+npm run dev          # Chrome with HMR, opens a fresh browser profile
 npm run dev:firefox  # Firefox with HMR
 npm run compile      # TypeScript check
 npm run icons        # Regenerate icon PNGs from assets/icon.svg
@@ -101,7 +101,7 @@ Adding another site is roughly 20 lines: create a new `*.content.ts`, list selec
 
 ## Contributing
 
-PRs and bug reports welcome. The most common failure mode is **selector drift** — when one of the target sites ships a UI update, the selectors break. If you notice a sidebar isn't blurring, please [open an issue](https://github.com/GoodluckH/Hush/issues/new?template=selector-broken.md) with the affected site and the new selector you found in DevTools.
+PRs and bug reports welcome. The most common failure mode is **selector drift**. When one of the target sites ships a UI update, the selectors break. If you notice a sidebar isn't blurring, please [open an issue](https://github.com/GoodluckH/Hush/issues/new?template=selector-broken.md) with the affected site and the new selector you found in DevTools.
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md) for the dev loop and architecture notes.
 

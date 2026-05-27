@@ -21,12 +21,12 @@ export default defineConfig({
       '*://gemini.google.com/*',
     ],
     action: {
-      default_title: 'Hush — toggle',
+      default_title: 'Toggle Hush',
       default_popup: 'popup.html',
     },
     commands: {
       'toggle-hush': {
-        // Ctrl/Cmd+Shift+H is reserved by Chrome/macOS — never fires.
+        // Ctrl/Cmd+Shift+H is reserved by Chrome/macOS, so it never fires.
         // Y is unbound on both platforms and lives in the extension namespace.
         suggested_key: {
           default: 'Ctrl+Shift+Y',

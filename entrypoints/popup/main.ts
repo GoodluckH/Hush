@@ -72,7 +72,7 @@ async function activeHost(): Promise<string | null> {
   }
 }
 
-// Soft wave glyph — sound being smoothed/quieted.
+// Soft wave glyph. Suggests sound being smoothed and quieted.
 const ICON_HUSH = `
   <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <path d="M4 13c2.2-3.2 4.5-3.2 6.5 0s4.3 3.2 6.5 0" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>

@@ -11,7 +11,7 @@ npm install
 npm run dev   # spins up a Chrome window with HMR
 ```
 
-The `dev` profile is isolated from your normal Chrome — you'll need to log into ChatGPT / Claude / Gemini once. Edits to the popup hot-reload instantly; edits to content scripts reload the target page automatically.
+The `dev` profile is isolated from your normal Chrome. You'll need to log into ChatGPT / Claude / Gemini once. Edits to the popup hot-reload instantly; edits to content scripts reload the target page automatically.
 
 Before opening a PR:
 
@@ -26,15 +26,15 @@ When ChatGPT / Claude / Gemini ship a UI update, the CSS selectors that find sid
 
 1. Open the affected site in the dev Chrome window
 2. DevTools → Inspect a sidebar row
-3. Find a stable selector — prefer in this order:
+3. Find a stable selector. Prefer in this order:
    1. `data-*` attributes (e.g. `[data-test-id="conversation"]`)
    2. Semantic anchors (e.g. `nav a[href^="/chat/"]`)
    3. Custom elements (e.g. `gem-nav-list-item`)
-   4. As a last resort, class names — they often change on every deploy
+   4. As a last resort, class names. They often change on every deploy
 4. Update the `selectors` array in the relevant `entrypoints/*.content.ts`
 5. Verify by reloading the page
 
-If you're unsure whether your selector is stable, ship it anyway — selector churn is expected and getting *something* working is better than nothing.
+If you're unsure whether your selector is stable, ship it anyway. Selector churn is expected and getting *something* working is better than nothing.
 
 ## Adding a new target site
 
@@ -53,7 +53,7 @@ Done. No other wiring needed.
 ## Code style
 
 - TypeScript, strict mode (the repo's default)
-- Vanilla DOM in the popup — no framework
+- Vanilla DOM in the popup. No framework
 - No external dependencies in the content script bundle if you can help it (every KB ships to the user's browser)
 
 ## Reporting bugs
