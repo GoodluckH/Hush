@@ -294,18 +294,43 @@
         font-size: 13px;
         color: var(--ink);
       }
-      .step-detail .kbd {
-        display: inline-block;
-        padding: 2px 7px;
-        background: var(--paper);
-        border: 1.5px solid var(--ink);
-        border-bottom-width: 3px;
-        font-family: var(--mono);
-        font-size: 12px;
-        color: var(--ink);
-        line-height: 1;
-        margin: 0 1px;
+      .step-title em {
+        font-style: italic;
+        color: var(--rust);
       }
+
+      /* Copy chip: monospace URL + small copy button, side by side */
+      .copy-row {
+        display: inline-flex;
+        align-items: stretch;
+        margin-top: 12px;
+        border: var(--border);
+        background: var(--paper-2);
+      }
+      .copy-row .url {
+        font-family: var(--mono);
+        font-size: 13px;
+        padding: 8px 12px;
+        color: var(--ink);
+        user-select: all;
+        border-right: var(--border);
+        line-height: 1.4;
+      }
+      .copy-btn {
+        font-family: var(--sans);
+        font-size: 12.5px;
+        font-weight: 500;
+        padding: 8px 14px;
+        background: var(--ink);
+        color: var(--paper);
+        border: none;
+        cursor: pointer;
+        letter-spacing: 0.01em;
+        transition: background 160ms ease;
+        white-space: nowrap;
+      }
+      .copy-btn:hover { background: #2a201a; }
+      .copy-btn.copied { background: var(--rust); }
 
       /* ---------- Trust ---------- */
       .trust {
@@ -440,7 +465,11 @@
             <div class="step-num">02</div>
             <div class="step-body">
               <h3 class="step-title">Open Chrome's extensions page</h3>
-              <p class="step-detail">Paste this into your address bar: <code>chrome://extensions</code></p>
+              <p class="step-detail">Browsers won't let websites jump there for you — paste it in yourself.</p>
+              <div class="copy-row">
+                <span class="url">chrome://extensions</span>
+                <button class="copy-btn" type="button" data-copy="chrome://extensions">Copy URL</button>
+              </div>
             </div>
           </div>
           <div class="step">
@@ -453,8 +482,8 @@
           <div class="step">
             <div class="step-num">04</div>
             <div class="step-body">
-              <h3 class="step-title">Click <code>Load unpacked</code> and pick the folder</h3>
-              <p class="step-detail">Done. Visit ChatGPT, Claude, or Gemini — sidebar titles are blurred. Hover any row to reveal it. Use <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">Y</span> to toggle, or <span class="kbd">Ctrl</span><span class="kbd">⇧</span><span class="kbd">Y</span> on Windows.</p>
+              <h3 class="step-title">Click <em>Load unpacked</em> and pick the folder</h3>
+              <p class="step-detail">Done. Visit ChatGPT, Claude, or Gemini — sidebar titles are blurred. Hover any row to reveal it.</p>
             </div>
           </div>
         </div>
@@ -472,5 +501,33 @@
         <span><a href="https://github.com/GoodluckH/Hush/issues">Report an issue →</a></span>
       </footer>
     </main>
+
+    <script>
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.dataset.copy || '';
+          const original = btn.textContent;
+          try {
+            await navigator.clipboard.writeText(text);
+          } catch {
+            // Fallback for older browsers / non-secure contexts
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+          }
+          btn.textContent = 'Copied ✓';
+          btn.classList.add('copied');
+          setTimeout(() => {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+          }, 1600);
+        });
+      });
+    </script>
   </body>
 </html>
