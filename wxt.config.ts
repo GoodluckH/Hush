@@ -2,6 +2,13 @@ import { defineConfig } from 'wxt';
 
 // See https://wxt.dev/api/config.html
 export default defineConfig({
+  // Zip artifact: the *unzipped folder name* is what end-users see in their
+  // Downloads. We want "Hush.zip" → "Hush/" instead of WXT's default
+  // "hush-0.1.0-chrome.zip" → "hush-0.1.0-chrome/". When we add a
+  // distributable Firefox build later, switch this to be browser-aware.
+  zip: {
+    artifactTemplate: 'Hush.zip',
+  },
   manifest: {
     name: 'Hush',
     description:

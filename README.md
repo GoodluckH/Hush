@@ -14,7 +14,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/GoodluckH/Hush/releases/latest/download/hush-0.1.0-chrome.zip"><img src="https://img.shields.io/badge/⬇️_Download_for_Chrome-fafafa?style=for-the-badge&labelColor=fafafa&color=fafafa" alt="Download for Chrome" /></a>
+  <a href="https://github.com/GoodluckH/Hush/releases/latest/download/Hush.zip"><img src="https://img.shields.io/badge/⬇️_Download_for_Chrome-fafafa?style=for-the-badge&labelColor=fafafa&color=fafafa" alt="Download for Chrome" /></a>
 </p>
 
 <p align="center">
